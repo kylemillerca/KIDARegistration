@@ -1,0 +1,13 @@
+{
+  "classifications": ["Scholastic", "Independent"],
+  "disciplines": ["Color Guard", "Moving Percussion","Percussion Ensemble", "Marching Winds", "Majorette", "Dance Team"],
+  "competitiveClasses":{
+    "guard" : ["Middle School Cadet", "Middle School Competitive", "Bronze", "Gold", "White", "Blue", "Platinum", "World", "Senior"],
+    "movingPercussion": ["Middle School", "Gold", "White", "Blue", "Platinum", "World", "Senior"],
+    "percussionEnsemble" : ["Middle School", "Gold", "White", "Blue", "Platinum", "World", "Senior"],
+    "majorette" : ["Junior", "Gold", "White", "Blue"],
+    "danceTeam" : ["Open"],
+    "marchingWinds" : ["Open"]
+  }
+
+}
