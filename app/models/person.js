@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 
 var personSchema = new Schema({
     name: String,
-    roles: [{type: String, enum: ["judge", "tabulator","timingAndPentalty", "digitalTech", "KIDAStaff", "unitDirector", "unitStaff", "showHost", "sponsor", "webAdmin"]}],
+    roles: [{type: String, enum: ["judge", "tabulator","timingAndPenalty", "digitalTech", "KIDAStaff", "unitDirector", "unitStaff", "showHost", "sponsor", "webAdmin"]}],
     address: [AddressSchema],
     email: String,
     phone: String,

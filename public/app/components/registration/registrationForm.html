@@ -1,0 +1,206 @@
+<div id='registration-reminders'>
+    <h2>KIDA Show Registration Form</h3>
+        <h4>Registration for the 2016 Season Begins on December 1, 2015</h4>
+
+        <p>Directors &#8211; Please review these important notes before beginning with your show registration:</p>
+        <ol>
+            <li><strong>Register Each Unit</strong> &#8211; If you are the director for multiple units, please remember
+                that
+                you will need to register each unit separately.
+            </li>
+            <li><strong>Review Your Submission &#8211; </strong>Once you have submitted your show registration, you will
+                not
+                be able to alter the submission without contacting KIDA. Please review all information before submitting
+                the
+                form
+            </li>
+            <li><strong>Assistance</strong> &#8211; If you need assistance with the Online Registration process, please
+                <a href="http://www.kida.org/contact/">click here</a>.
+            </li>
+        </ol>
+</div>
+<div id="registration-form-content">
+    <form role="form" id='registration-form' ng-submit="submit()">
+        <div id="unit-information">
+            <span class="h3">Unit Information</span>
+
+            <div class="form-group">
+                <label for="unit-name" class="control-label">Unit Name<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="100" type="text"
+                       id="unit-name" ng-model="unit.name">
+            </div>
+            <div class="form-group">
+                <label for="class-list">Classification<span class="field-required">*</span></label>
+
+                <div class="radio" id="class-list" ng-repeat="classification in classificationLists.classifications">
+                    <label>
+                        <input required type="radio" name="class-radio" ng-model="unit.classification"
+                               ng-value="classification">
+                        {{classification}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="discipline-list" class="control-label">Discipline<span
+                        class="field-required"> *</span></label>
+
+                <div class="radio" id="discipline-list" ng-repeat="discipline in classificationLists.disciplines">
+                    <label>
+                        <input required type="radio" name="discipline-radio" ng-model="unit.discipline"
+                               ng-value="discipline">
+                        {{discipline}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comp-class-list" class="control-label">Competitive Classification<span
+                        class="field-required"> *</span></label>
+
+                <div class="radio" id="comp-class-list"
+                     ng-repeat="class in classificationLists.competitiveClasses[toCamelCase(unit.discipline)]">
+                    <label>
+                        <input required ng-disabled="unit.discipline==='default'" type="radio"
+                               name="comp-class-radio" ng-value="class" ng-model="unit.competitiveClass">
+                        {{class}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="unit-location">Unit City and State<span class="field-required"> *</span></label>
+
+                <div class="form-inline">
+                    <input class="form-control input-sm" ng-minlength="3" ng-maxlength="50" required type="text"
+                           id="unit-location" ng-model="unit.unitCity"></li>
+                    <select class="form-control input-sm" required ng-model="unit.state"
+                            ng-options="state as state for state in states"></select>
+                </div>
+            </div>
+        </div>
+        <div id="contact-information">
+            <h3>Contact Information</h3>
+            <div class="form-group">
+                <label for="unit-director" class="control-label">Unit Director<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="text"
+                       ng-model="primaryContact.name" id="unit-director">
+            </div>
+            <div class="form-group">
+                <label for="director-email" class="control-label">Unit Director Email<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="email"
+                       ng-model="primaryContact.email" id="director-email">
+            </div>
+            <div class="form-group">
+                <label for="director-phone" class="control-label">Unit Director Phone Number<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="tel"
+                       ng-model="primaryContact.phone" id="director-phone">
+            </div>
+            <div class="form-group">
+                <label for="director-street" class="control-label">Street Address<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="text"
+                       ng-model="primaryContact.address.street" id="director-street">
+            </div>
+            <div class="form-group">
+            <label for="director-city" class="control-label">City, State and Zip<span class="field-required"> *</span></label>
+                <div class="form-inline">
+                    <input required class="form-control" ng-minlength="1" ng-maxlength="50" type="text"
+                           ng-model="primaryContact.address.city" id="director-city" placeholder="city">
+                    <select class="form-control" required ng-disabled="state" ng-model="primaryContact.address.state"
+                        ng-options="state as state for state in states"></select>
+                    <input required class="form-control" ng-minlength="5" ng-maxlength="10" type="text" id="director-zip"
+                           ng-model="primaryContact.address.zip" placeholder="zip">
+                </div>
+            </div>
+        </div>
+        <div id="secondary-contact-information">
+            <h3>Secondary Unit Contact Information</h3>
+            <div class="form-group">
+                <label for="unit-secondary-contact" class="control-label">Secondary Contact Name<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="text"
+                       ng-model="secondaryContact.name" id="unit-secondary-contact">
+            </div>
+            <div class="form-group">
+                <label for="secondary-email" class="control-label">Secondary Contact Email<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="email"
+                       ng-model="secondaryContact.email" id="secondary-email">
+            </div>
+            <div class="form-group">
+                <label for="secondary-phone" class="control-label">Secondary Contact Phone Number<span class="field-required"> *</span></label>
+                <input required class="form-control input-sm" ng-minlength="1" ng-maxlength="50" type="tel"
+                       ng-model="secondaryContact.phone" id="secondary-phone">
+            </div>
+        </div>
+        <div id="competition-selection">
+            <h3>Contest Selection</h3>
+            <div class="form-group">
+                <label for="open-competitions" class="control-label">2016 Competition Calendar</label>
+                <div class="checkbox" id="open-competitions"
+                     />
+                     ng-repeat="competition in competitions">
+                    <label>
+                        <input type="checkbox" name="comp-checkbox" ng-disabled="competition.competitionFull" ng-value=b "competition">
+                        {{competition.competitionHost + " -- " + competition.competitionDate}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="wait-listed-competitions" class="control-label">Wait Listed Competitions</label>
+                <span id="waitListHelp" class="help-block">
+                     Please note that the following competitions have been WAIT LISTED. You may still register for
+                     these shows, but your registration may not be accepted. If you would like to be added to the wait
+                     list for these shows, please click the show below.
+                 </span>
+                <div class="checkbox" id="wait-listed-competitions"
+                     ng-repeat="competition in competitions | filter:{competitionFull: true}">
+                    <label>
+                        <input type="checkbox" name="waitlist-checkbox" ng-value="competition">
+                        {{competition.competitionHost + " -- " + competition.competitionDate}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="confirmation-agreement">
+            <h3>Confirmation and Agreement</h3>
+            <p>Please carefully review the information on the previous page before you submit to verify that what you have entered is correct.</p>
+            <p>This form serves as a contract entered into and executed pursuant to the KIDA By-laws. This contract is subject to all applicable \
+                provision of the KIDA Constitution and By-laws, and understands that the same applies to the contest designated in this contract.</p>
+
+            <div class="form-group">
+                <label for="confirmation" class="control-label">Confirmation<span class="field-required"> *</span></label>
+                <div class="checbox" id="confirmation">
+                    <span id="confirmationHelp" class="help-block">
+                        By checking the box below, I agree to adhere to the previous policies in order to compete during the 2015 competitive season.
+                        I understand that violation of any of these policies and procedures may result in disqualification from any or all KIDA events
+                        and/or financial penalty to my ensemble.
+                    </span>
+                    <label>
+                        <input required type="checkbox" name="confirmation-checkbox">
+                        I Understand
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cancellation-agreement" class="control-label">KIDA Cancellation Policy<span class="field-required"> *</span></label>
+                <div class="checkbox" id="cancellation-agreement">
+                    <span id="cancellationHelp" class="help-block">
+                        Members may make revisions to their show registration without penalty between December 1 and January 1.
+                        Any member unit canceling after January 1 may lose their bond to the show host running the show.
+                        Any member unit canceling 2 to 4 weeks before a show date may lose their bond plus be subject to an additional
+                        $50.00 fine to the show host running the show. Any member unit canceling 1 week or less before a show date may
+                        lose their bond and be subject to an additional $100 fine to the show host running the show and will go on first
+                        in Championships within their given class. The show fee will be forfeited for any cancelation after January 1.
+                        The cancellation policy will be enforced at the discretion of the Contest Coordinator and President when no
+                        legitimate reason is given for the cancellation.
+                    </span>
+                    <label>
+                        <input required type="checkbox" name="cancellation-checkbox">
+                        I Understand
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </form>
+</div>
